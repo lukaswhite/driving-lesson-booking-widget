@@ -1,0 +1,241 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.jumbotron {
+	background: url(/assets/driving.jpg);
+	background-size: cover;
+	color: white;
+}
+
+.jumbotron h1, .jumbotron p {
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.cal, ol.times, .book {
+	font: 13px/1.5 "Helvetica Neue", Helvetica, Arial, san-serif;	
+	margin: 30px auto;
+	box-shadow:0px 3px 3px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:0px 3px 3px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow:0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+.cal {
+	display:table;
+}
+
+.cal .header, .times .header {
+	cursor:default;
+	background: #cd310d;
+	background: -moz-linear-gradient(top, #b32b0c, #cd310d);
+	background: -webkit-gradient(linear, left top, left bottom, from(#b32b0c), to(#cd310d));
+	height:34px;
+	position:relative;
+	color:#fff;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	font-weight:bold;
+	text-shadow:0px -1px 0 #87260c;
+	text-transform: uppercase;
+}
+.cal .header span {
+	display:inline-block;
+	line-height:34px;
+}
+
+.cal .header .button {
+	width:24px;
+	text-align:center;
+	position:absolute;
+}
+.cal .header .button:hover {
+	background: -moz-linear-gradient(top, #d94215, #bb330f);
+	background: -webkit-gradient(linear, left top, left bottom, from(#d94215), to(#bb330f));
+}
+.cal .header .right.button {
+	right:0;
+	top:0; 
+	border-left:1px solid #ae2a0c;
+	border-top-right-radius: 5px;
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius: 5px;
+}
+.cal .header .left.button {
+	left:0;
+	border-right:1px solid #ae2a0c;
+	border-top-left-radius: 5px;
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius: 5px;
+}
+
+.cal .header .month-year {
+	letter-spacing:1px;
+	width:100%;
+	text-align:center;
+}
+
+.cal table {
+	background:#fff;
+	border-collapse: collapse;
+}
+.cal td {
+	color:#2d2d2d;
+	width:30px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	border:1px solid #e6e6e6;
+	cursor:default;
+}
+
+.cal #day td {
+	height:26px;
+	line-height:26px;
+	text-transform:uppercase;
+	font-size:90%;
+	color:#9e9e9e;
+}
+.cal #days td:not(:last-child) {
+	border-right:1px solid #fff;
+}
+
+.cal .cal-frame td.today {
+	background:#ededed;
+	color:#8c8c8c8;
+	box-shadow:1px 1px 0px #fff inset;
+	-moz-box-shadow:1px 1px 0px #fff inset;
+	-webkit-box-shadow:1px 1px 0px #fff inset;
+}
+
+.cal .cal-frame td.past {	
+	color:#eee;
+	cursor: not-allowed;
+}
+
+.cal .cal-frame td.available {	
+	background: #E7F9E7;
+	color:#333;
+	cursor: pointer;
+}
+
+
+.cal .cal-frame td.available:hover, ol.times li.available:hover {
+	color:#fff;
+	text-shadow:#6c1a07 0px -1px;
+	background:#cd310d;
+	background: -moz-linear-gradient(top, #b32b0c, #cd310d);
+	background: -webkit-gradient(linear, left top, left bottom, from(#b32b0c), to(#cd310d));
+	box-shadow:0px 0px 0px;
+	-moz-box-shadow:0px 0px 0px;
+	-webkit-box-shadow:0px 0px 0px;
+	cursor: pointer;
+}
+.cal .cal-frame td span {
+	font-size:80%;
+	position:relative;
+}
+.cal .cal-frame td span:first-child {
+	bottom:5px;
+}
+
+.cal .cal-frame td span:last-child {
+	top:5px;
+}
+
+.cal .cal-frame table.temp {
+	position:absolute;
+} 
+
+.cal .cal-frame table.curr {
+	float:right;
+}
+
+.loading {
+	padding: 10px;
+	text-align: center;
+}
+
+ol.times {	
+	padding: 0;
+	list-style: none;	
+}
+
+ol.times li.header {
+	text-align: center;
+}
+
+ol.times li {
+	min-height: 35px;
+	padding: 5px;	
+}
+
+ol.times li:not(:last-child):not(:first-child) {
+	border-bottom: dashed 1px #aaa;
+}
+
+ol.times li {
+	background: #f7f7f7;
+	color: #ddd;
+	cursor: not-allowed;
+}
+
+ol.times li.nil .hour {
+	
+}
+
+ol.times li.available {
+	background: #E7F9E7;
+	color: #000;
+	cursor: pointer;
+}
+
+ol.times li.available:hover {
+	border: solid 1px #000;
+}
+
+ol.times li.booked {
+	background: #fff;
+	color: #eee;
+}
+
+ol.steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	counter-reset: steps;
+}
+
+ol.steps li > header {
+	font-size: 1.2em;
+	line-height: 2em;	
+	color: #ddd;
+}
+
+ol.steps li > header:before {
+	content: counter(steps);
+	counter-increment: steps;
+	font-size: 2em;
+	margin-right: 10px;	
+}
+
+ol.steps li.active header {
+	color: #333;
+}
+
+.book header {
+	text-align: center;
+}
+
+.book fieldset {
+	padding: 5px;
+}
+
+.book .loading, .book .confirmed {
+	padding: 20px;
+	text-align: center;
+}

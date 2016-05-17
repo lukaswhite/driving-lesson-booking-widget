@@ -1,0 +1,25 @@
+{
+  "name": "sitepoint/driving-instructor-booking-widget",
+  "authors": [
+    "lukaswhite <hello@lukaswhite.com>"
+  ],
+  "description": "A simple widget for booking driving lessons",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "~1.0.21",
+    "moment": "~2.13.0",
+    "vue-form": "~0.3.1"
+  }
+}
