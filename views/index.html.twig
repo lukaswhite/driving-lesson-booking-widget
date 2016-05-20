@@ -56,7 +56,7 @@
 
 								<div class="header">
 									<span class="left button" id="prev" v-on:click="previousMonth" v-if="!month.isSame(today, 'month')"> &lang; </span>						
-									<span class="month-year" id="label"> {{ selectedMonth }} </span>						
+									<span class="month-year" id="label"> {{ month | formatDateTime 'MMM YYYY' }} </span>						
 									<span class="right button" id="next" v-on:click="nextMonth"> &rang; </span>
 								</div>
 
@@ -92,7 +92,7 @@
 									{{ day | formatDateTime 'ddd Do MMM YYYY' }}
 								</li>
 
-								<li v-for="hour in hours" v-bind:class="{ 'available' : hour.available }" v-on:click="selectHour( hour )">
+								<li v-for="hour in hours" v-bind:class="{ 'available' : hour.available }" v-on:click="selectTime( hour )">
 									<div class="hour">{{ hour.h | time }}</div>
 								</li>
 
@@ -156,6 +156,7 @@
                   <h3>{{ booking.id }}</h3>
                   <footer>
                     <button class="btn btn-lg btn-primary" v-on:click="reset">Start Over</button>
+                  </footer>
                 </div>
 
               </div>
