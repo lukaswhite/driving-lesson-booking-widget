@@ -2,7 +2,9 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request,
-		Symfony\Component\HttpFoundation\Response;
+		Symfony\Component\HttpFoundation\Response,
+		Monolog\Logger,
+		Monolog\Handler\StreamHandler;
 
 $app = new Silex\Application( );
 
@@ -46,6 +48,15 @@ $app[ 'client' ] = $app->share( function( ) use ( $app ) {
 } );
 
 /**
+ * Set up logging
+ */
+$app[ 'logger' ] = $app->share( function( ) use ( $app ) {	
+	$logger = new Logger('errors');	
+	$logger->pushHandler(new StreamHandler(__DIR__.'/../logs/error.log', Logger::ERROR));
+	return $logger;
+} );
+
+/**
  * Acts as a proxy to `/availability/dates` and `/availability/times`
  * We can use these two in conjunction to find an available date, then drill down
  * and find an available time / slot.
@@ -58,6 +69,11 @@ $app->get( 'api/availability/{period}', function( Request $request, $period ) us
 
 	// Make the request...
 	$response = $app[ 'client' ]->request( $url );		
+
+	// If there's an error, write it to the log
+	if ( $response[ 'status_code' ] !== 200 ) {
+		$app[ 'logger' ]->error( $response[ 'message' ] );
+	}
 
 	// ... and simply return it
 	return json_encode( $response );
@@ -82,6 +98,11 @@ $app->post( 'api/appointments', function( Request $request ) use ( $app ) {
 			'data'		=>	$data,
 		]
 	);		
+
+	// If there's an error, write it to the log
+	if ( $response[ 'status_code' ] !== 200 ) {
+		$app[ 'logger' ]->error( $response[ 'message' ] );
+	}
 
 	// ...and return it
 	return json_encode( $response );
